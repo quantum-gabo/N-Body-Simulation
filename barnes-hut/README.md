@@ -1,2 +1,0 @@
-# Barnes-Hut Algorithm
-***

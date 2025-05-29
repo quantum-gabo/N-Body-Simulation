@@ -1,6 +1,17 @@
 # Prerequisites
 *.d
 
+# Test and temp directories
+old/
+opt/
+
+# Raw data generated in results 
+results/
+
+# Test files
+test/
+
+
 # Compiled Object files
 *.slo
 *.lo

@@ -110,7 +110,7 @@ void UniformDisk(std::vector<Body*>& bodies, int count) {
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> angleDist(0.0f, 2.0f * M_PI);
     std::uniform_real_distribution<float> unitDist(0.0f, 1.0f);
-    std::uniform_real_distribution<float> massDist(0.01f, 0.09f);
+    std::uniform_real_distribution<float> massDist(0.5f, 50.0f);
 
     // Central massive body
     float centralMass = 4e6f;

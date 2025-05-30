@@ -30,7 +30,7 @@ namespace Constants {
     constexpr int THREAD_COUNT = 8;         // Thread pool size
 
     // SDL PARAMETERS
-    constexpr int WINDOW_WIDTH  = 800;     // Window width
-    constexpr int WINDOW_HEIGHT = 800;     // Window height
+    constexpr int WINDOW_WIDTH  = 1000;     // Window width
+    constexpr int WINDOW_HEIGHT = 1000;     // Window height
     constexpr SDL_Color BACKGROUND_COLOUR = {255, 255, 255, 255}; // White background
 }

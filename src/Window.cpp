@@ -173,8 +173,8 @@ bool WindowSDL::handleEvents() {
                 float worldYBefore = offset.y - (mouseY - height / 2.0f) / scaleY;
 
                 // Update zoom factor (zoom in = zoomFactor smaller)
-                if (event.wheel.y > 0) zoomFactor /= 1.1f;
-                else if (event.wheel.y < 0) zoomFactor *= 1.1f;
+                if (event.wheel.y > 0) zoomFactor /= 1.02f;
+                else if (event.wheel.y < 0) zoomFactor *= 1.02f;
 
                 // Recompute scale after zoom
                 scaleX = (width * 0.5f) / (2.0f * zoomFactor);
@@ -223,8 +223,8 @@ bool WindowSDL::handleEvents() {
 
 //====== View manipulation methods ======
 
-void WindowSDL::zoomIn()        { zoomFactor *= 1.1f; }
-void WindowSDL::zoomOut()       { zoomFactor /= 1.1f; }
+void WindowSDL::zoomIn()        { zoomFactor *= 1.05f; }
+void WindowSDL::zoomOut()       { zoomFactor /= 1.05f; }
 void WindowSDL::panLeft()       { offset.x   += 0.02f; }
 void WindowSDL::panRight()      { offset.x   -= 0.02f; }
 void WindowSDL::panUp()         { offset.y   -= 0.02f; }

@@ -6,7 +6,8 @@ old/
 opt/
 
 # Raw data generated in results 
-results/
+results/frames/frame_*.bmp
+results/*bmp
 
 # Test files
 test/

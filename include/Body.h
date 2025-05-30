@@ -8,13 +8,14 @@
  */
 class Body {
 public:
+    float mass;             // Mass of the body
+    float radius;           // Radius of the body
     Vector2D pos;           // Position vector
     Vector2D vel;           // Velocity vector
     Vector2D acc;           // Acceleration vector
     Vector2D _prevPos;      // Previous position (for integrators)
     bool isCentral = false; // Flag to indicate if this is the central body
-    float mass;             // Mass of the body
-    float radius;           // Radius of the body
+
 
     /**
      * @brief Custom constructor for Body.

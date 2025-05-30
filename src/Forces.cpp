@@ -8,8 +8,6 @@
 const float G = Constants::G;
 const float SOFTENING = Constants::SOFTENING;
 
-
-// Calculate direct N^2 gravitational forces with softening and OpenMP parallelism
 void Forces::calculateDirectForces(std::vector<Body*>& bodies) {
     const size_t n = bodies.size();
 
@@ -45,8 +43,7 @@ void Forces::calculateDirectForces(std::vector<Body*>& bodies) {
     }
 }
 
-// Barnes-Hut force calculation using your Quadtree class
-void Forces::calculateBarnesHutForces(std::vector<Body*>& bodies,Quadtree& tree, float theta, float epsilon) {
+void Forces::calculateBarnesHutForces(std::vector<Body*>& bodies,Quadtree& tree) {
     if (bodies.empty()) return;
 
     // Build root bounding quad from all bodies

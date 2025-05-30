@@ -28,14 +28,12 @@ class Vector2D {
          * @param x X component of the vector.
          * @param y Y component of the vector.
          */
-        explicit
         Vector2D(float x, float y);
 
         /**
          * @brief Destructor for Vector2D.
          * Cleans up any resources if necessary (not needed in this case).
          */
-        virtual
         ~Vector2D();
 
         // Operator overloads for vector arithmetic 

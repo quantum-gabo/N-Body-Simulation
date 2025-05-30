@@ -10,6 +10,9 @@ results/
 
 # Test files
 test/
+bin/
+# Build directories
+build/
 
 
 # Compiled Object files
@@ -59,4 +62,4 @@ test/
 **/CMakeLists.txt.user
 **/cmake_install.cmake 
 report-figures.svg
-.vscode/settings.json
+.vscode/

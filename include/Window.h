@@ -160,7 +160,7 @@ private:
     float zoomFactor;        ///< Current zoom magnification factor
     Vector2D offset;         ///< Current view offset (panning)
     bool paused;             ///< Pause state flag
-    bool isRecording;        ///< Video recording state flag
+    bool isRecording = false;        ///< Video recording state flag
     std::vector<SDL_Surface*> frames; ///< Captured frames for video recording
     
     /**

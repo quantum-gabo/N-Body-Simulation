@@ -19,6 +19,7 @@ void VerletIntegrator::integrateSystem(std::vector<Body*>& bodies, float dt) {
     }
 }
 
+
 void VerletIntegrator::initPrevPos(std::vector<Body*>& bodies, float dt) {
     // Precompute dt^2
     float dt2 = dt * dt;

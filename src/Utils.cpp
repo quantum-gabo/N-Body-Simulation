@@ -6,10 +6,7 @@
 #include <iostream>
 #include "../include/Utils.h"
 
-/*
-############# Utility Functions for N-Body Simulation #############
-*/
-// Returns total energy: kinetic + potential
+
 double computeTotalEnergy(const std::vector<Body*>& bodies) {
     double kineticEnergy = 0.0;
     double potentialEnergy = 0.0;
@@ -20,7 +17,6 @@ double computeTotalEnergy(const std::vector<Body*>& bodies) {
         double v2 = b->vel.x * b->vel.x + b->vel.y * b->vel.y;
         kineticEnergy += 0.5 * b->mass * v2;
     }
-
     // Potential energy: -G * sum_{i<j} m_i m_j / r_ij
     #pragma omp parallel for reduction(+:potentialEnergy) schedule(dynamic)
     for (size_t i = 0; i < bodies.size(); ++i) {
@@ -37,19 +33,16 @@ double computeTotalEnergy(const std::vector<Body*>& bodies) {
     return kineticEnergy + potentialEnergy;
 }
 
-// Sort bodies by distance from the central body (first body)
 void sortByDistance(std::vector<Body*>& bodies) {
     std::sort(bodies.begin(), bodies.end(), [](const Body* a, const Body* b){
-        return a->pos.magSqr() < b->pos.magSqr();
+        return a->pos.mag() < b->pos.mag();
     });
 };
 
-// Assign initial velocities based on the Mass(<r)
 void assignInitVelocities(std::vector<Body*>& bodies) {
     float MASS = 0.0f;
     Vector2D centralPos(0.0f, 0.0f);
     Vector2D centralVel(0.0f, 0.0f);
-    int counter = 0;
     for (auto& body : bodies) {
         MASS += body->mass;
         if (body->isCentral) {
@@ -69,31 +62,37 @@ void assignInitVelocities(std::vector<Body*>& bodies) {
 /*
 ################### Initial Models for N-Body Simulation ###################
 */
-
-void SolarSystem(std::vector<Body*>& bodies, int n_bodies) {
+void SolarSystem(std::vector<Body*>& bodies) {
     bodies.clear();
+    const int n_bodies = 9; // 1 Sun + 8 Planets
     bodies.reserve(n_bodies);
 
-    // Sun 
-    bodies.push_back(new Body(1.0f, 10.0f, Vector2D(0.0f, 0.0f), Vector2D(0.0f, 0.0f), Vector2D(0.0f, 0.0f)));
-    // Planets
+    // Sun — mass in M☉, radius in AU
+    float sunMass = 1.0f;  // in solar masses
+    float sunRadius = 0.0f; //Not used.
+
+    Body sun(sunMass, sunRadius, Vector2D(0.0f, 0.0f), Vector2D(0.0f, 0.0f), Vector2D(0.0f, 0.0f));
+    sun.isCentral = true; // Mark as central body
+    bodies.push_back(new Body(sun)); // Add sun to the system
+
+    // Planet data — mass in M☉, radius scaled, distance in AU, speed in AU/year
     struct Planet {
         const char* name;
         float mass;     // in M☉
-        float radius;   // scaled for visualisation
+        float radius;   // in Earth radii (to be converted)
         float distance; // in AU
-        float speed;    // in AU/yr
+        float speed;    // in AU/year
     };
 
     std::vector<Planet> planets = {
-        {"Mercury", 1.65e-7f, 0.38f, 0.39f,  2.4f},
-        {"Venus",   2.45e-6f, 0.95f, 0.72f,  1.9f},
-        {"Earth",   3.00e-6f, 1.00f, 1.00f,  1.0f},
-        {"Mars",    3.2e-7f,  0.53f, 1.52f,  0.8f},
-        {"Jupiter", 9.5e-4f,  11.2f, 5.20f,  0.43f},
-        {"Saturn",  2.85e-4f, 9.5f,  9.58f,  0.32f},
-        {"Uranus",  4.4e-5f,  4.0f,  19.2f,  0.23f},
-        {"Neptune", 5.1e-5f,  3.9f,  30.1f,  0.18f},
+        {"Mercury", 1.65e-7f, 0.0f,  0.39f,  2.4f},
+        {"Venus",   2.45e-6f, 0.0f,  0.72f,  1.9f},
+        {"Earth",   3.00e-6f, 0.0f,  1.00f,  1.0f},
+        {"Mars",    3.20e-7f, 0.0f,  1.52f,  0.8f},
+        {"Jupiter", 9.50e-4f, 0.0f,  5.20f,  0.43f},
+        {"Saturn",  2.85e-4f, 0.0f,  9.58f,  0.32f},
+        {"Uranus",  4.40e-5f, 0.0f,  19.2f,  0.23f},
+        {"Neptune", 5.10e-5f, 0.0f,  30.1f,  0.18f},
     };
 
     for (const auto& planet : planets) {
@@ -111,7 +110,7 @@ void UniformDisk(std::vector<Body*>& bodies, int count) {
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> angleDist(0.0f, 2.0f * M_PI);
     std::uniform_real_distribution<float> unitDist(0.0f, 1.0f);
-    std::uniform_real_distribution<float> massDist(1.0f, 50.0f);
+    std::uniform_real_distribution<float> massDist(0.01f, 0.09f);
 
     // Central massive body
     float centralMass = 4e6f;

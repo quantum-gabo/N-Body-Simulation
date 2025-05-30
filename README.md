@@ -5,7 +5,7 @@
 [![OpenMP](https://img.shields.io/badge/OpenMP-Enabled-blue.svg)](https://www.openmp.org/)
 
 <!-- Screenshot placeholder - Replace with an actual screenshot for your repository -->
-<video src="./results/simulation.mp4" autoplay loop muted playsinline></video>
+Below you can find a frame from the simulation, showcasing the node structure of the Barnes-Hut approximation. You can also find a [video](./results/simulation.mp4) of the simulation.
 
 <!-- Animation placeholder - Consider hosting large media files externally -->
 

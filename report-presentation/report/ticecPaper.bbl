@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{cuda-nbody}
+{Chapter 31. Fast N-Body Simulation with CUDA} (Apr 2025), \url{https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-31-fast-n-body-simulation-cuda}, [Online; accessed 6. Apr. 2025]
+
+\bibitem{HEGGIE2006575}
+Heggie, D.: Gravitational n-body problem (classical). In: Françoise, J.P., Naber, G.L., Tsun, T.S. (eds.) Encyclopedia of Mathematical Physics, pp. 575--582. Academic Press, Oxford (2006). \doi{https://doi.org/10.1016/B0-12-512666-2/00003-1}, \url{https://www.sciencedirect.com/science/article/pii/B0125126662000031}
+
+\bibitem{klypin2017methods}
+Klypin, A.: Methods for cosmological n-body simulations. URL http://www. skiesanduniverses. org/resources/KlypinNbody. pdf  (2017)
+
+\bibitem{MAKSIMENKO2022110962}
+Maksimenko, V., Lipnitskii, A., Kartamyshev, A., Poletaev, D., Kolobov, Y.R.: The n-body interatomic potential for molecular dynamics simulations of diffusion in tungsten. Computational Materials Science  \textbf{202},  110962 (2022). \doi{https://doi.org/10.1016/j.commatsci.2021.110962}, \url{https://www.sciencedirect.com/science/article/pii/S0927025621006571}
+
+\bibitem{10.1093/mnras/staa1915}
+Wang, L., Iwasawa, M., Nitadori, K., Makino, J.: petar: a high-performance n-body code for modelling massive collisional stellar systems. Monthly Notices of the Royal Astronomical Society  \textbf{497}(1),  536--555 (07 2020). \doi{10.1093/mnras/staa1915}, \url{https://doi.org/10.1093/mnras/staa1915}
+
+\bibitem{book:8675}
+William H.~Press, Saul A.~Teukolsky, W.T.V.B.P.F.: Numerical recipes: the art of scientific computing. Cambridge University Press, 3rd ed edn. (2007), \url{http://gen.lib.rus.ec/book/index.php?md5=0edc79280d53ef968ffa05d63dfd5e55}
+
+\end{thebibliography}

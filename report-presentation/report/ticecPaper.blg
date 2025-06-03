@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ticecPaper.aux
+The style file: splncs04.bst
+Database file #1: bibliography.bib
+Warning--to sort, need author or key in cuda-nbody
+Too many commas in name 1 of "William H. Press, Saul A. Teukolsky, William T. Vetterling, Brian P. Flannery" for entry book:8675
+while executing---line 1503 of file splncs04.bst
+Too many commas in name 1 of "William H. Press, Saul A. Teukolsky, William T. Vetterling, Brian P. Flannery" for entry book:8675
+while executing---line 1540 of file splncs04.bst
+You've used 6 entries,
+            2850 wiz_defined-function locations,
+            643 strings with 6082 characters,
+and the built_in function-call counts, 3216 in all, are:
+= -- 257
+> -- 81
+< -- 5
++ -- 34
+- -- 27
+* -- 214
+:= -- 401
+add.period$ -- 9
+call.type$ -- 6
+change.case$ -- 33
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 297
+empty$ -- 310
+format.name$ -- 30
+if$ -- 712
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 57
+newline$ -- 24
+num.names$ -- 12
+pop$ -- 102
+preamble$ -- 1
+purify$ -- 24
+quote$ -- 0
+skip$ -- 91
+stack$ -- 0
+substring$ -- 183
+swap$ -- 162
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 1
+while$ -- 23
+width$ -- 7
+write$ -- 73
+(There were 2 error messages)

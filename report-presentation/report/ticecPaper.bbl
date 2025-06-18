@@ -3,14 +3,14 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
-\bibitem{cuda-nbody}
-{Chapter 31. Fast N-Body Simulation with CUDA} (Apr 2025), \url{https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-31-fast-n-body-simulation-cuda}, [Online; accessed 6. Apr. 2025]
+\bibitem{barnes1986hierarchical}
+Barnes, J., Hut, P.: A hierarchical o (n log n) force-calculation algorithm. nature  \textbf{324}(6096),  446--449 (1986)
+
+\bibitem{BURTSCHER201175}
+Burtscher, M., Pingali, K.: Chapter 6 - an efficient cuda implementation of the tree-based barnes hut n-body algorithm. In: mei W.~Hwu, W. (ed.) GPU Computing Gems Emerald Edition, pp. 75--92. Applications of GPU Computing Series, Morgan Kaufmann, Boston (2011). \doi{https://doi.org/10.1016/B978-0-12-384988-5.00006-1}, \url{https://www.sciencedirect.com/science/article/pii/B9780123849885000061}
 
 \bibitem{HEGGIE2006575}
 Heggie, D.: Gravitational n-body problem (classical). In: Françoise, J.P., Naber, G.L., Tsun, T.S. (eds.) Encyclopedia of Mathematical Physics, pp. 575--582. Academic Press, Oxford (2006). \doi{https://doi.org/10.1016/B0-12-512666-2/00003-1}, \url{https://www.sciencedirect.com/science/article/pii/B0125126662000031}
-
-\bibitem{klypin2017methods}
-Klypin, A.: Methods for cosmological n-body simulations. URL http://www. skiesanduniverses. org/resources/KlypinNbody. pdf  (2017)
 
 \bibitem{MAKSIMENKO2022110962}
 Maksimenko, V., Lipnitskii, A., Kartamyshev, A., Poletaev, D., Kolobov, Y.R.: The n-body interatomic potential for molecular dynamics simulations of diffusion in tungsten. Computational Materials Science  \textbf{202},  110962 (2022). \doi{https://doi.org/10.1016/j.commatsci.2021.110962}, \url{https://www.sciencedirect.com/science/article/pii/S0927025621006571}

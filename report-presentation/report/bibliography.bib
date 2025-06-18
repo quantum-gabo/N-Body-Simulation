@@ -6,6 +6,8 @@
 	url = {https://jheer.github.io/barnes-hut}
 }
 
+
+
 @article{barnes1986hierarchical,
   title={A hierarchical O (N log N) force-calculation algorithm},
   author={Barnes, Josh and Hut, Piet},
@@ -94,4 +96,61 @@ abstract = {Tungsten, as the most refractory metal, is applied in fusion reactor
    edition =   {3rd ed},
    volume =    {},
    url =       {http://gen.lib.rus.ec/book/index.php?md5=0edc79280d53ef968ffa05d63dfd5e55}
+}
+
+
+
+@incollection{BURTSCHER201175,
+title = {Chapter 6 - An Efficient CUDA Implementation of the Tree-Based Barnes Hut n-Body Algorithm},
+editor = {Wen-mei W. Hwu},
+booktitle = {GPU Computing Gems Emerald Edition},
+publisher = {Morgan Kaufmann},
+address = {Boston},
+pages = {75-92},
+year = {2011},
+series = {Applications of GPU Computing Series},
+isbn = {978-0-12-384988-5},
+doi = {https://doi.org/10.1016/B978-0-12-384988-5.00006-1},
+url = {https://www.sciencedirect.com/science/article/pii/B9780123849885000061},
+author = {Martin Burtscher and Keshav Pingali},
+abstract = {Publisher Summary
+This chapter describes the first CUDA implementation of the classical Barnes Hut n-body algorithm that runs entirely on the GPU. The Barnes Hut force-calculation algorithm is widely used in n-body simulations such as modeling the motion of galaxies. It hierarchically decomposes the space around the bodies into successively smaller boxes, called cells, and computes summary information for the bodies contained in each cell, allowing the algorithm to quickly approximate the forces (e.g., gravitational, electric, or magnetic) that the n bodies induce upon each other. The Barnes Hut algorithm is challenging to implement efficiently in CUDA because it repeatedly builds and traverses an irregular tree-based data structure, it performs a lot of pointer-chasing memory operations, and it is typically expressed recursively. GPU-specific operations such as thread-voting functions are exploited to greatly improve performance and make use of fence instructions to implement lightweight synchronization without atomic operations. The main conclusion of the work is that GPUs can be used to accelerate irregular codes, not just regular codes. However, a great deal of programming effort is required to achieve good performance. The biggest performance win, though, came from turning some of the unique architectural features of GPUs, which are often regarded as performance hurdles for irregular codes, into assets. Future direction indicates workings on writing high-performing CUDA implementations for other irregular algorithms.}
+}
+
+@article{van2013barnes,
+  title={Barnes-hut-sne},
+  author={Van Der Maaten, Laurens},
+  journal={arXiv preprint arXiv:1301.3342},
+  year={2013}
+}
+
+@inproceedings{gangavarapu2019parallel,
+  title={Parallel OpenMP and CUDA implementations of the n-body problem},
+  author={Gangavarapu, Tushaar and Pal, Himadri and Prakash, Pratyush and Hegde, Suraj and Geetha, V},
+  booktitle={Computational Science and Its Applications--ICCSA 2019: 19th International Conference, Saint Petersburg, Russia, July 1--4, 2019, Proceedings, Part I 19},
+  pages={193--208},
+  year={2019},
+  organization={Springer}
+}
+
+@article{li2011n,
+  title={N-body simulations for coupled scalar-field cosmology},
+  author={Li, Baojiu and Barrow, John D},
+  journal={Physical Review D—Particles, Fields, Gravitation, and Cosmology},
+  volume={83},
+  number={2},
+  pages={024007},
+  year={2011},
+  publisher={APS}
+}
+
+
+@article{geng2013treecode,
+  title={A treecode-accelerated boundary integral Poisson--Boltzmann solver for electrostatics of solvated biomolecules},
+  author={Geng, Weihua and Krasny, Robert},
+  journal={Journal of Computational Physics},
+  volume={247},
+  pages={62--78},
+  year={2013},
+  publisher={Elsevier}
 }

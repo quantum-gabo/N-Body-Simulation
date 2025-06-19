@@ -20,7 +20,7 @@ WindowSDL::WindowSDL(int w, int h)
              width, height, 0);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    font     = TTF_OpenFont("../src/JetBrainsMonoNLNerdFontMono-Regular.ttf", 16); 
+    font     = TTF_OpenFont("../src/JetBrainsMonoNLNerdFontMono-Regular.ttf", 20); 
 }
 
 WindowSDL::~WindowSDL() {

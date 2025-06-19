@@ -4,7 +4,9 @@
 #include <ctime>
 #include <omp.h>
 #include <iostream>
+#include <fstream>
 #include "../include/Utils.h"
+#include "../include/Constants.h"
 
 
 double computeTotalEnergy(const std::vector<Body*>& bodies) {
@@ -32,6 +34,27 @@ double computeTotalEnergy(const std::vector<Body*>& bodies) {
 
     return kineticEnergy + potentialEnergy;
 }
+
+void logEnergyDeviation(const std::vector<Body*>& bodies, int step, const std::string& filename) {
+    static bool initialized = false;
+    static double initialEnergy = 0.0;
+
+    double currentEnergy = computeTotalEnergy(bodies);
+
+    if (!initialized) {
+        initialEnergy = currentEnergy * Constants::DEFAULT_TIMESTEP; // properly store it
+        std::ofstream file(filename);
+        file << "step,total_energy,delta_energy" << std::endl;
+        initialized = true;
+    }
+
+    if (step % 100 == 0) {
+        double deltaE = (currentEnergy - initialEnergy) / initialEnergy;
+        std::ofstream file(filename, std::ios::app);
+        file << step << "," << currentEnergy << "," << deltaE << std::endl;
+    }
+}
+
 
 void sortByDistance(std::vector<Body*>& bodies) {
     std::sort(bodies.begin(), bodies.end(), [](const Body* a, const Body* b){
@@ -106,8 +129,8 @@ void UniformDisk(std::vector<Body*>& bodies, int count) {
     // Random engine and distributions
     bodies.clear();
     bodies.reserve(count);
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    // std::random_device rd;
+    std::mt19937 gen(42);
     std::uniform_real_distribution<float> angleDist(0.0f, 2.0f * M_PI);
     std::uniform_real_distribution<float> unitDist(0.0f, 1.0f);
     std::uniform_real_distribution<float> massDist(0.5f, 50.0f);
@@ -150,9 +173,7 @@ void UniformDisk(std::vector<Body*>& bodies, int count) {
 
     // Assign initial velocities based on the Mass(<r)
     assignInitVelocities(bodies);
-
 }
-
 
 void TwoGalaxySystem(std::vector<Body*>& bodies, int totalCount) {
     const int countPerGalaxy = totalCount / 2;
@@ -213,4 +234,19 @@ void TwoGalaxySystem(std::vector<Body*>& bodies, int totalCount) {
     bodies.clear();
     bodies.insert(bodies.end(), g1.begin(), g1.end());
     bodies.insert(bodies.end(), g2.begin(), g2.end());
+}
+
+void WriteForcesToFile(const std::vector<Body*>& bodies, const std::string& filename) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << filename << std::endl;
+        return;
+    }
+    file << "body_index,force_x,force_y\n";
+    for (size_t i = 0; i < bodies.size(); ++i) {
+        const Body* body = bodies[i];
+        file << i << "," << body->acc.x << "," << body->acc.y << "\n";
+    }
+    file.close();
+    std::cout << "Forces written to " << filename << std::endl;
 }

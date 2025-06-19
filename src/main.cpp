@@ -21,6 +21,8 @@ int main(int argc, char* argv[]) {
     int init_system = 0;// Flag for initializing two galaxies
     bool draw_nodes = false; // Flag for rendering quadtree nodes
     bool benchmark = false; // Flag for running benchmarks
+    bool energy_deviation = false; // Flag for logging energy deviation
+    bool write_forces = false; // Flag for writing forces to a file
     std::string integrator = "verlet"; // Default integrator type
     std::string method = "barnes-hut"; // Default method for force calculation
 
@@ -49,6 +51,10 @@ int main(int argc, char* argv[]) {
     app.add_option("-I, --integrator", integrator, "Integrator type (verlet, euler)")
         ->default_val("verlet")
         ->check(CLI::IsMember({"verlet", "euler"}));
+
+    app.add_flag("--energy", energy_deviation, "Log energy deviation to a CSV file");
+
+    app.add_flag("--write-forces", write_forces, "Write forces acting on bodies to a file");
 
     CLI11_PARSE(app, argc, argv);
 
@@ -94,6 +100,15 @@ int main(int argc, char* argv[]) {
     WindowSDL window(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT);
     Uint32 lastFrameTime = SDL_GetTicks();  // Initialize last frame time for FPS calculation
     int steps = 0; // Step counter for the simulation
+    std::string filename;
+    std::string force_file;
+    if (method == "barnes-hut") {
+        filename = "../results/energy_bh.csv";
+        force_file = "../results/forces_bh.csv";
+    } else {
+        filename = "../results/energy_direct.csv";
+        force_file = "../results/forces_direct.csv";
+    }
 
     //============== Main Simulation Loop ==============
 
@@ -109,8 +124,14 @@ int main(int argc, char* argv[]) {
         
         float fps = (deltaTime > 0.0f) ? (1.0f / deltaTime) : 0.0f;
 
+
         // If the simulation is not paused, update the system
         if (!window.isPaused()) {
+            // Energy logging
+            if (energy_deviation) {
+                logEnergyDeviation(bodies, steps, filename);
+            }
+
             // Compute forces based on the selected method
             if (method == "barnes-hut") {
                 Forces::calculateBarnesHutForces(bodies, tree);
@@ -126,6 +147,10 @@ int main(int argc, char* argv[]) {
                 } 
             } else if (integrator == "euler") {
                 euler.integrateSystem(bodies, time_step);
+            }
+
+            if (write_forces && steps == 100){
+                WriteForcesToFile(bodies, force_file);
             }
         }
 

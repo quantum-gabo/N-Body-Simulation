@@ -11,6 +11,26 @@
  */
 double totEnergy(const std::vector<Body*>& bodies);
 
+
+/**
+ * @brief Logs the energy deviation of the system to a CSV file.
+ * This function computes the total energy of the system and logs the deviation from a reference energy value
+ * to a CSV file. The reference energy is computed at the initial time (t=0).
+ * @param bodies A vector of pointers to Body objects representing the system of bodies.
+ * @param time The current simulation time.
+ * @param filename The name of the file to log the energy deviation. Default is "energy_log.csv".
+ */
+void logEnergyDeviation(const std::vector<Body*>& bodies, int step, const std::string& filename);
+
+/**
+ * @brief Writes the forces acting on each body to a file.
+ * This function computes the forces acting on each body in the system and writes them to a specified file.
+ * The forces are written in a CSV format with columns for body index, force_x, and force_y.
+ * @param bodies A vector of pointers to Body objects representing the system of bodies.
+ * @param filename The name of the file to write the forces to. Default is "forces_log.csv".
+ */
+void WriteForcesToFile(const std::vector<Body*>& bodies, const std::string& filename);
+
 /**
  * @brief Sorts bodies by their distance from the central body.
  * This function sorts the bodies in ascending order based on their distance
